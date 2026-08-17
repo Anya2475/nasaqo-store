@@ -3,165 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NESAQO STORE - متجر الأحذية</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background-color: #0f0f12; color: #ffffff; padding-bottom: 50px; }
-    
-    /* Header */
-    header { background: #1a1a24; text-align: center; padding: 25px 15px; border-bottom: 2px solid #2a2a3a; }
-    header h1 { font-size: 2rem; letter-spacing: 2px; color: #4f46e5; }
-    header p { color: #a0a0b0; font-size: 0.9rem; margin-top: 5px; }
-
-    /* Container & Products */
-    .container { max-width: 1000px; margin: 30px auto; padding: 0 15px; }
-    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-    
-    .product-card { background: #181824; border: 1px solid #282838; border-radius: 16px; overflow: hidden; transition: 0.3s; }
-    .product-card:hover { transform: translateY(-5px); border-color: #4f46e5; }
-    .product-img { width: 100%; height: 240px; object-fit: cover; background: #252535; }
-    .product-info { padding: 20px; }
-    .product-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 10px; }
-    .product-price { font-size: 1.3rem; color: #22c55e; font-weight: bold; margin-bottom: 15px; }
-    
-    .btn-buy { width: 100%; background: #4f46e5; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.2s; }
-    .btn-buy:hover { background: #4338ca; }
-
-    /* Modal / Form */
-    .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px); justify-content: center; align-items: center; z-index: 1000; padding: 15px; }
-    .modal { background: #181824; border: 1px solid #282838; border-radius: 16px; padding: 25px; width: 100%; max-width: 450px; position: relative; }
-    .close-btn { position: absolute; top: 15px; left: 15px; background: none; border: none; color: #a0a0b0; font-size: 1.5rem; cursor: pointer; }
-    .modal h2 { margin-bottom: 15px; font-size: 1.3rem; text-align: center; color: #4f46e5; }
-    
-    .form-group { margin-bottom: 15px; }
-    .form-group label { display: block; margin-bottom: 6px; font-size: 0.9rem; color: #ccc; }
-    .form-group input, .form-group select { width: 100%; padding: 12px; background: #0f0f12; border: 1px solid #2a2a3a; border-radius: 8px; color: white; font-size: 0.95rem; outline: none; }
-    .form-group input:focus, .form-group select:focus { border-color: #4f46e5; }
-    
-    .btn-submit { width: 100%; background: #22c55e; color: white; border: none; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; cursor: pointer; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .btn-submit:hover { background: #16a34a; }
-  </style>
+  <meta name="description" content="NESAQO STORE - متجر أحذية ومنتجات رياضية">
+  <title>NESAQO STORE | متجر الأحذية</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-  <header>
-    <h1>NESAQO STORE</h1>
-    <p>متجر الأحذية والمنتجات الرياضية - توصيل لجميع الولايات</p>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="#" aria-label="NESAQO STORE - الصفحة الرئيسية">
+        <img class="logo-image" src="ChatGPT Image 17 أغسطس 2026، 06_39_54 م.png" alt="شعار NESAQO للأحذية والأناقة">
+        <span class="logo-name">NESAQO <small>SHOES &amp; STYLE</small></span>
+      </a>
+      <button class="cart-button" id="openCart" aria-label="فتح السلة">
+        🛒 <span>السلة</span>
+        <b id="cartCount">0</b>
+      </button>
+    </div>
   </header>
 
-  <div class="container">
-    <div class="products-grid">
-      
-      <!-- منتج 1 -->
-      <div class="product-card">
-        <img class="product-img" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="حذاء">
-        <div class="product-info">
-          <div class="product-title">حذاء نايكي أحمر رياضي</div>
-          <div class="product-price">4800 دج</div>
-          <button class="btn-buy" onclick="openOrderModal('حذاء نايكي أحمر رياضي', '4800 دج')">اطلب الآن</button>
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <div>
+          <span class="eyebrow">NESAQO STORE</span>
+          <h1>اختَر حذاءك<br><span>بثقة وأناقة</span></h1>
+          <p>أحذية رياضية مختارة بعناية، مع توصيل لجميع الولايات.</p>
+          <a class="primary-btn" href="#products">تصفح المنتجات</a>
+        </div>
+        <div class="hero-card">
+          <div class="hero-shoe">👟</div>
+          <strong>منتجات جديدة</strong>
+          <span>اطلب الآن عبر WhatsApp</span>
         </div>
       </div>
+    </section>
 
-      <!-- منتج 2 -->
-      <div class="product-card">
-        <img class="product-img" src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500" alt="حذاء">
-        <div class="product-info">
-          <div class="product-title">حذاء بوما كلاسيك أسود</div>
-          <div class="product-price">5200 دج</div>
-          <button class="btn-buy" onclick="openOrderModal('حذاء بوما كلاسيك أسود', '5200 دج')">اطلب الآن</button>
+    <section class="products-section" id="products">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">المتجر</span>
+            <h2>منتجاتنا</h2>
+          </div>
+          <input id="searchInput" class="search" type="search" placeholder="ابحث عن منتج...">
         </div>
+        <div class="products-grid" id="productsGrid"></div>
       </div>
+    </section>
+  </main>
 
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-label="سلة المشتريات">
+    <div class="drawer-header">
+      <h2>سلة المشتريات</h2>
+      <button class="icon-btn" id="closeCart">✕</button>
     </div>
-  </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="total-row"><span>المجموع</span><strong id="cartTotal">0 دج</strong></div>
+      <button class="primary-btn full" id="checkoutBtn">إتمام الطلب عبر WhatsApp</button>
+    </div>
+  </aside>
 
-  <!-- Modal Form / نافذة الطلب -->
-  <div class="modal-overlay" id="orderModal">
-    <div class="modal">
-      <button class="close-btn" onclick="closeOrderModal()">&times;</button>
-      <h2>تأكيد الطلب</h2>
-      
-      <form id="orderForm" onsubmit="submitToWhatsApp(event)">
-        <div class="form-group">
-          <label>المنتج المختار:</label>
-          <input type="text" id="selectedProduct" readonly style="color: #4f46e5; font-weight: bold;">
-        </div>
+  <div class="modal" id="orderModal">
+    <div class="modal-card">
+      <button class="icon-btn modal-close" id="closeModal">✕</button>
+      <span class="eyebrow">تأكيد الطلب</span>
+      <h2>بيانات التوصيل</h2>
+      <p class="muted">سيتم تجهيز رسالة الطلب وإرسالها إلى WhatsApp.</p>
 
-        <div class="form-group">
-          <label for="shoeSize">المقاس المطلوب:</label>
-          <select id="shoeSize" required>
-            <option value="">اختر المقاس...</option>
-            <option value="39">39</option>
-            <option value="40">40</option>
-            <option value="41">41</option>
-            <option value="42">42</option>
-            <option value="43">43</option>
-            <option value="44">44</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="fullName">الاسم الكامل:</label>
-          <input type="text" id="fullName" placeholder="أدخل اسمك الكريم" required>
-        </div>
-
-        <div class="form-group">
-          <label for="phoneNumber">رقم الهاتف:</label>
-          <input type="tel" id="phoneNumber" placeholder="06XXXXXXXX" required>
-        </div>
-
-        <div class="form-group">
-          <label for="state">الولاية والبلدية:</label>
-          <input type="text" id="state" placeholder="مثال: الجزائر - باب الزوار" required>
-        </div>
-
-        <button type="submit" class="btn-submit">
-          تأكيد الطلب عبر WhatsApp
-        </button>
+      <form id="orderForm">
+        <label>الاسم الكامل<input id="fullName" required placeholder="مثال: محمد أحمد"></label>
+        <label>رقم الهاتف<input id="phone" type="tel" required placeholder="06XXXXXXXX"></label>
+        <label>الولاية والبلدية<input id="address" required placeholder="مثال: الجزائر - باب الزوار"></label>
+        <label>ملاحظات <textarea id="notes" rows="3" placeholder="ملاحظة اختيارية"></textarea></label>
+        <button class="primary-btn full" type="submit">تأكيد وإرسال الطلب</button>
       </form>
     </div>
   </div>
 
-  <script>
-    // ضع رقم هاتفك المربوط بـ WhatsApp هنا (مع رمز الدولة بدون 0 الأول)
-    const WHATSAPP_NUMBER = "213697454244";
-    let currentProduct = "";
-    let currentPrice = "";
+  <footer class="footer">
+    <div class="container">© 2026 NESAQO STORE — جميع الحقوق محفوظة</div>
+  </footer>
 
-    function openOrderModal(productName, price) {
-      currentProduct = productName;
-      currentPrice = price;
-      document.getElementById('selectedProduct').value = `${productName} (${price})`;
-      document.getElementById('orderModal').style.display = 'flex';
-    }
-
-    function closeOrderModal() {
-      document.getElementById('orderModal').style.display = 'none';
-    }
-
-    function submitToWhatsApp(event) {
-      event.preventDefault();
-
-      const size = document.getElementById('shoeSize').value;
-      const name = document.getElementById('fullName').value;
-      const phone = document.getElementById('phoneNumber').value;
-      const state = document.getElementById('state').value;
-
-      const message = `مرحباً، أريد تأكيد طلب حذاء من متجر *NESAQO*:\n\n` +
-                      `👟 *المنتج:* ${currentProduct}\n` +
-                      `💰 *السعر:* ${currentPrice}\n` +
-                      `📏 *المقاس:* ${size}\n` +
-                      `-------------------------\n` +
-                      `👤 *الاسم:* ${name}\n` +
-                      `📞 *الهاتف:* ${phone}\n` +
-                      `📍 *الولاية/العنوان:* ${state}`;
-
-      const encodedMessage = encodeURIComponent(message);
-      const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
-
-      window.open(whatsappURL, '_blank');
-      closeOrderModal();
-    }
-  </script>
+  <script src="js/app.js"></script>
 </body>
 </html>
