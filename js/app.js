@@ -1,9 +1,15 @@
 const WHATSAPP_NUMBER = "213697454244";
 
-// المنتجات الحالية تجريبية. عند وصول أول شحنة نستبدل هذه البيانات فقط.
+// منتجات عرض مؤقتة — سنستبدل الصور والبيانات بالمنتجات الحقيقية لاحقًا.
 const products = [
-  { id: 1, name: "حذاء رياضي موديل A", price: 4800, stock: 8, sizes: [39,40,41,42,43], image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=900", desc: "حذاء رياضي عصري للاستخدام اليومي." },
-  { id: 2, name: "حذاء رياضي موديل B", price: 5200, stock: 5, sizes: [40,41,42,43,44], image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=900", desc: "تصميم أنيق ومريح للإطلالات اليومية." }
+  { id: 1, name: "سنيكرز أبيض Urban", price: 4800, stock: 8, sizes: [39,40,41,42,43], image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=900", desc: "سنيكرز عصري بتصميم أبيض وألوان رياضية، مناسب للاستعمال اليومي." },
+  { id: 2, name: "سنيكرز أبيض Classic", price: 5200, stock: 6, sizes: [40,41,42,43,44], image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=900", desc: "تصميم أنيق وخفيف يجمع بين الراحة والمظهر العصري." },
+  { id: 3, name: "حذاء نسائي Fashion", price: 4500, stock: 7, sizes: [36,37,38,39,40], image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=900", desc: "حذاء نسائي أنيق بإطلالة عصرية للاستخدام اليومي." },
+  { id: 4, name: "حذاء رياضي Black", price: 5500, stock: 5, sizes: [40,41,42,43,44], image: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=900", desc: "موديل رياضي أسود بتصميم عملي ومظهر قوي." },
+  { id: 5, name: "سنيكرز Red Street", price: 5000, stock: 9, sizes: [39,40,41,42,43], image: "https://images.unsplash.com/photo-1543508282-6319a3e2621f?w=900", desc: "سنيكرز شبابي بتفاصيل رياضية ولمسة جريئة." },
+  { id: 6, name: "حذاء نسائي Elegant", price: 5900, stock: 4, sizes: [36,37,38,39], image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=900", desc: "تصميم نسائي أنيق مناسب للخروج والمناسبات اليومية." },
+  { id: 7, name: "سنيكرز Premium", price: 6200, stock: 6, sizes: [40,41,42,43,44], image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=900", desc: "سنيكرز بتصميم عصري وراحة مناسبة للحركة طوال اليوم." },
+  { id: 8, name: "حذاء رياضي Light", price: 4700, stock: 10, sizes: [39,40,41,42,43,44], image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=900", desc: "موديل خفيف وعملي، مناسب للمشي والاستعمال اليومي." }
 ];
 
 let cart = JSON.parse(localStorage.getItem("nesaqo_cart") || "[]");
@@ -36,7 +42,7 @@ function renderProducts(list = products){
 
 function showProduct(id){
   const p = products.find(x=>x.id===id); if(!p)return;
-  productDetails.innerHTML = `<img class="detail-image" src="${p.image}" alt="${p.name}"><span class="eyebrow">NESAQO</span><h2>${p.name}</h2><p class="muted">${p.desc}</p><div class="detail-price">${money(p.price)}</div><p><strong>المخزون:</strong> ${p.stock > 0 ? `${p.stock} زوج` : 'نفد'}</p><div class="size-picker"><strong>اختر المقاس:</strong><div>${p.sizes.map(s=>`<button type="button" class="size-btn" data-size="${s}" onclick="selectSize(this)">${s}</button>`).join('')}</div></div><button class="primary-btn full detail-buy" ${!available(p)?'disabled':''} onclick="buyNow(${p.id}, true)">إضافة للسلة والطلب</button>`;
+  productDetails.innerHTML = `<img class="detail-image" src="${p.image}" alt="${p.name}"><span class="eyebrow">NESAQO STORE</span><h2>${p.name}</h2><p class="muted">${p.desc}</p><div class="detail-price">${money(p.price)}</div><p><strong>الكمية المتوفرة:</strong> ${p.stock > 0 ? `${p.stock} زوج` : 'نفد المخزون'}</p><div class="size-picker"><strong>اختر المقاس:</strong><div>${p.sizes.map(s=>`<button type="button" class="size-btn" data-size="${s}" onclick="selectSize(this)">${s}</button>`).join('')}</div></div><button class="primary-btn full detail-buy" ${!available(p)?'disabled':''} onclick="buyNow(${p.id}, true)">إضافة للسلة والطلب</button>`;
   productModal.classList.add("show"); productModal.setAttribute("aria-hidden","false"); overlay.classList.add("show");
 }
 function selectSize(btn){ document.querySelectorAll('.size-btn').forEach(x=>x.classList.remove('selected')); btn.classList.add('selected'); }
