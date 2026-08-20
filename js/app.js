@@ -1,16 +1,39 @@
 const WHATSAPP_NUMBER="213697454244";
-const products=[
-{id:1,name:"سنيكرز أبيض Urban",price:4800,oldPrice:5600,stock:8,sizes:[36,37,38,39,40],colors:["أبيض/أسود","أبيض/أسود/وردي"],badge:"الأكثر مبيعًا",image:"assets/product-1.jpg",desc:"سنيكرز عصري بتصميم أبيض وأسود ولمسة وردية، مناسب للإطلالات اليومية.",material:"خامة متينة · نعل مرن",comfort:"خفيف ومريح للمشي اليومي"},
-{id:2,name:"سنيكرز بيج Classic",price:5200,stock:6,sizes:[36,37,38,39,40],colors:["بيج/بني"],badge:"جديد",image:"assets/product-2.jpg",desc:"تصميم بيج وبني أنيق يجمع بين البساطة والراحة.",material:"خامة متينة · بطانة مريحة",comfort:"راحة طوال اليوم"},
-{id:3,name:"سنيكرز بيج مزخرف",price:4500,oldPrice:5100,stock:7,sizes:[36,37,38,39,40],colors:["بيج/بني/أبيض"],badge:"عرض",image:"assets/product-3.jpg",desc:"حذاء بتفاصيل مزخرفة ولمسة عصرية للاستخدام اليومي والخروج.",material:"خامة ناعمة · تشطيب أنيق",comfort:"خفيف وسهل الارتداء"},
-{id:4,name:"C-14 — سنيكرز أبيض وأسود",price:5500,stock:20,sizes:[36,37,38,39,40],colors:["أسود/أبيض","أبيض/أحمر","أبيض/أسود"],badge:"جديد",image:"assets/product-4.jpg",desc:"موديل C-14 بثلاثة ألوان، متوفر بالمقاسات 36 إلى 40.",material:"خامة متينة · نعل مرن",comfort:"مريح للاستخدام اليومي"},
-{id:5,name:"C-15 — سنيكرز مزخرف",price:5500,stock:20,sizes:[36,37,38,39,40],colors:["أسود/أبيض","بيج/أبيض","أبيض"],badge:"جديد",image:"assets/product-5.jpg",desc:"موديل C-15 بتصميم مزخرف وثلاثة ألوان، متوفر بالمقاسات 36 إلى 40.",material:"خامة متينة · تشطيب أنيق",comfort:"خفيف ومريح"},
-{id:6,name:"C-19 — سنيكرز أبيض وأسود",price:5500,stock:20,sizes:[36,37,38,39,40],colors:["أسود/أبيض","أبيض/أسود"],badge:"جديد",image:"assets/product-6.jpg",desc:"موديل C-19 بتصميم أبيض وأسود، متوفر بالمقاسات 36 إلى 40.",material:"خامة متينة · نعل مرن",comfort:"راحة مناسبة للمشي اليومي"},
-{id:7,name:"سنيكرز Premium",price:6200,stock:6,sizes:[40,41,42,43,44],colors:["أبيض","رمادي"],badge:"Premium",image:"https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=1000",desc:"سنيكرز بمظهر فاخر وتفاصيل عصرية لمن يبحث عن التميز.",material:"خامة Premium · نعل عالي المرونة",comfort:"دعم جيد للقدم أثناء المشي"},
-{id:8,name:"حذاء رياضي Light",price:4700,oldPrice:5300,stock:10,sizes:[39,40,41,42,43,44],colors:["أسود","أبيض"],badge:"خفيف",image:"https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=1000",desc:"موديل خفيف وعملي، مناسب للمشي والاستعمال اليومي.",material:"نسيج خفيف · نعل مرن",comfort:"خفيف جدًا ومرن"}
+const productImages=[
+"assets/ChatGPT Image 19 أغسطس 2026، 03_34_40 م.png",
+"assets/ChatGPT Image 19 أغسطس 2026، 03_34_48 م.png",
+"assets/ChatGPT Image 19 أغسطس 2026، 03_36_56 م.png",
+"assets/ChatGPT Image 19 أغسطس 2026، 03_37_03 م.png",
+"assets/ChatGPT Image 19 أغسطس 2026، 03_37_08 م.png",
+"assets/ChatGPT Image 19 أغسطس 2026، 03_37_15 م.png",
+"assets/ChatGPT Image 19 أغسطس 2026، 03_37_28 م.png",
+"assets/ChatGPT Image 19 أغسطس 2026، 03_37_35 م.png",
+"assets/ChatGPT Image 19 أغسطس 2026، 03_37_40 م.png",
+"assets/ChatGPT Image 19 أغسطس 2026، 03_37_46 م.png",
+"assets/ChatGPT Image 19 أغسطس 2026، 03_39_11 م.png",
+"assets/ChatGPT Image 20 أغسطس 2026، 01_49_21 م.png",
+"assets/ChatGPT Image 20 أغسطس 2026، 01_52_43 م.png",
+"assets/ChatGPT Image 20 أغسطس 2026، 01_59_08 م.png"
 ];
+const prices=[4800,5200,4500,5500,5500,5500,6200,4700,5200,5800,5400,6200,5900,6500];
+const oldPrices=[5600,null,5100,null,null,null,null,5300,null,6500,null,7000,null,7200];
+const badges=["الأكثر مبيعًا","جديد","عرض","جديد","جديد","جديد","جديد","خفيف","جديد","Premium","جديد","جديد","عرض","Premium"];
+const products=productImages.map((image,index)=>({
+ id:index+1,
+ name:`NASAQO — موديل ${String(index+1).padStart(2,"0")}`,
+ price:prices[index],
+ ...(oldPrices[index]?{oldPrice:oldPrices[index]}:{}),
+ stock:8,
+ sizes:[36,37,38,39,40,41,42,43,44],
+ colors:["كما في الصورة"],
+ badge:badges[index],
+ image,
+ desc:"موديل من تشكيلة NASAQO الجديدة، بتصميم أنيق للاستخدام اليومي.",
+ material:"خامة مختارة · نعل مرن",
+ comfort:"مريح ومناسب للاستخدام اليومي"
+}));
 let cart=JSON.parse(localStorage.getItem("nesaqo_cart")||"[]");const $=id=>document.getElementById(id),productsGrid=$("productsGrid"),searchInput=$("searchInput"),cartCount=$("cartCount"),cartItems=$("cartItems"),cartTotal=$("cartTotal"),cartDrawer=$("cartDrawer"),overlay=$("overlay"),orderModal=$("orderModal"),productModal=$("productModal"),productDetails=$("productDetails");const money=v=>new Intl.NumberFormat("ar-DZ").format(v)+" دج",discount=p=>p.oldPrice?Math.round((1-p.price/p.oldPrice)*100):0;
-function renderProducts(list=products){productsGrid.innerHTML=list.map(p=>`<article class="product-card"><div class="image-wrap"><img class="product-image" src="${p.image}" alt="${p.name}" loading="lazy"><div class="badges">${p.badge?`<span class="product-badge">${p.badge}</span>`:""}${p.oldPrice?`<span class="discount-badge">-${discount(p)}%</span>`:""}</div></div><div class="product-info"><div class="rating">★★★★★ <span>تقييمات لاحقًا</span></div><h3 class="product-title">${p.name}</h3><div class="price-line"><strong class="price">${money(p.price)}</strong>${p.oldPrice?`<del>${money(p.oldPrice)}</del>`:""}</div><div class="sizes-preview"><b>المقاسات:</b> ${p.sizes.join(" · ")}</div><div class="colors-preview"><b>الألوان:</b> ${p.colors.join(" · ")}</div><div class="product-actions"><button class="secondary-btn" onclick="showProduct(${p.id})">التفاصيل</button><button class="primary-btn" onclick="showProduct(${p.id})">أضف إلى السلة</button></div></div></article>`).join("")}
+function renderProducts(list=products){productsGrid.innerHTML=list.map(p=>`<article class="product-card"><div class="image-wrap"><img class="product-image" src="${p.image}" alt="${p.name}" loading="lazy"><div class="badges">${p.badge?`<span class="product-badge">${p.badge}</span>`:""}${p.oldPrice?`<span class="discount-badge">-${discount(p)}%</span>`:""}</div></div><div class="product-info"><div class="rating">★★★★★ <span>تقييمات لاحقًا</span></div><h3 class="product-title">${p.name}</h3><div class="price-line"><strong class="price">${money(p.price)}</strong>${p.oldPrice?`<del>${money(p.oldPrice)}</del>`:""}</div><div class="sizes-preview"><b>المقاسات:</b> ${p.sizes.join(" · ")}</div><div class="colors-preview"><b>اللون:</b> ${p.colors[0]}</div><div class="product-actions"><button class="secondary-btn" onclick="showProduct(${p.id})">التفاصيل</button><button class="primary-btn" onclick="showProduct(${p.id})">أضف إلى السلة</button></div></div></article>`).join("")}
 function showProduct(id){const p=products.find(x=>x.id===id);productDetails.innerHTML=`<img class="detail-image" src="${p.image}" alt="${p.name}"><span class="eyebrow">${p.badge||"NASAQO COLLECTION"}</span><h2>${p.name}</h2><div class="rating detail-rating">★★★★★ <span>تقييمات الزبائن قريبًا</span></div><div class="price-line detail-price-line"><strong class="detail-price">${money(p.price)}</strong>${p.oldPrice?`<del>${money(p.oldPrice)}</del><span class="discount-text">خصم ${discount(p)}%</span>`:""}</div><p class="muted">${p.desc}</p><div class="specs"><div><b>الخامة</b><span>${p.material}</span></div><div><b>الراحة</b><span>${p.comfort}</span></div><div><b>التوصيل</b><span>للمنزل أو مكتب الشحن</span></div></div><div class="choice-group"><strong>اختر اللون</strong><div class="choice-row">${p.colors.map((c,i)=>`<button class="color-btn ${i===0?"selected":""}" data-color="${c}" onclick="selectChoice(this,'.color-btn')">${c}</button>`).join("")}</div></div><div class="choice-group"><strong>اختر المقاس</strong><div class="choice-row">${p.sizes.map(s=>`<button class="size-btn" data-size="${s}" onclick="selectChoice(this,'.size-btn')">${s}</button>`).join("")}</div></div><button class="primary-btn full detail-buy" onclick="addDetailToCart(${p.id})">إضافة إلى السلة</button>`;productModal.classList.add("show");overlay.classList.add("show")}
 function selectChoice(btn,selector){document.querySelectorAll(selector).forEach(x=>x.classList.remove("selected"));btn.classList.add("selected")}function addDetailToCart(id){const size=document.querySelector(".size-btn.selected")?.dataset.size;if(!size)return alert("يرجى اختيار المقاس.");const color=document.querySelector(".color-btn.selected")?.dataset.color;addToCart(id,Number(size),color);closeProductModal();openCart()}function addToCart(id,size,color){const p=products.find(x=>x.id===id),item=cart.find(x=>x.id===id&&x.size===size&&x.color===color);if(item)item.qty=Math.min(item.qty+1,p.stock);else cart.push({id,qty:1,size,color});saveCart()}function saveCart(){localStorage.setItem("nesaqo_cart",JSON.stringify(cart));renderCart()}function removeFromCart(id,size,color){cart=cart.filter(x=>!(x.id===id&&x.size===size&&x.color===color));saveCart()}function changeQty(id,size,color,n){const item=cart.find(x=>x.id===id&&x.size===size&&x.color===color),p=products.find(x=>x.id===id);if(!item)return;item.qty+=n;if(item.qty<=0)removeFromCart(id,size,color);else{item.qty=Math.min(item.qty,p.stock);saveCart()}}
 function renderCart(){const count=cart.reduce((s,x)=>s+x.qty,0),total=cart.reduce((s,x)=>s+products.find(y=>y.id===x.id).price*x.qty,0);cartCount.textContent=count;cartTotal.textContent=money(total);cartItems.innerHTML=cart.length?cart.map(i=>{const p=products.find(x=>x.id===i.id);return `<div class="cart-item"><img src="${p.image}" alt="${p.name}"><div><h3>${p.name}</h3><p>${i.color||""} · المقاس ${i.size}</p><strong>${money(p.price*i.qty)}</strong><div class="qty"><button onclick="changeQty(${p.id},${i.size},'${i.color||""}',-1)">−</button><span>${i.qty}</span><button onclick="changeQty(${p.id},${i.size},'${i.color||""}',1)">+</button></div></div><button class="icon-btn" onclick="removeFromCart(${p.id},${i.size},'${i.color||""}')">🗑</button></div>`}).join(""):"<div class='empty'>السلة فارغة حاليًا 🛒</div>"}
